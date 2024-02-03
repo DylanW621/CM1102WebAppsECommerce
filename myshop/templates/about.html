@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <h1 class="headers">{{ pageHeader }}</h1>
+        <p class="subHeaders">Learn more {{pageHeader}}!</p>
+    </div>
+
+    <div class="imganText">
+        <div class="col-sm-4 float-left" style="margin-top: 0.5rem;">
+            <img src="{{url_for('static', filename='/media/location.png')}}">
+        </div>
+        
+        <div class="col-sm-4" style="margin-top: 0.5rem; margin-left: 1rem; font-weight:500;">
+            <span>Welcome to Caving Emporium! Our website is dedicated to all things caving and climbing, offering a wide range of products and resources to help you explore the depths of the earth with confidence and excitement.</span><br><br>
+            <span>Our team is made up of experienced cavers and climbers who are passionate about the sport and eager to share their knowledge with others. We provide expert advice and guidance on everything from choosing the right gear to planning your next trip.</span><br><br>
+            <span>Find us at:</span><br>
+            <span>
+                Caving Emporium<br>
+                Senghennydd Road<br>
+                Cardiff<br>
+                CF24 4AG
+            </span>
+        </div>
+    </div>
+
+{% endblock %}

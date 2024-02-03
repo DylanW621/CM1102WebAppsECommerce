@@ -1,0 +1,218 @@
+
+/* Google font input */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;600;700&display=swap');
+
+/* Styling for the footer */
+.footersty {
+    justify-self: center;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+/* This is styling for all pages. I have added margins and a default font */
+body{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+/* Used for any text thats red. e.g. error messages */
+.redtext {
+    color: red;
+}
+
+/* Padding for input fields */
+.inputfieldspad{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* this class is used in conjunction with hoverbut:hover
+* used to style button when cursor is hovered over*/
+.hoverbut{
+    border-radius: 64px;
+}
+.hoverbut:hover {
+    background-color: #D3D3D3;
+}
+/* ********************************************** */
+
+/* Styling for subheadings */
+.subHeaders {
+    font-weight: 600;
+    color: #545454;
+}
+
+/* Styling for headings */
+.headers {
+    font-weight: 700;
+    margin-bottom: -0.25rem;
+}
+
+/* Styling for nav bar font and font weights*/
+.navText{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 700;
+}
+
+/* Styling for item prices */
+.prices{
+    color: #545454;
+}
+
+/* Styling for advert on the front page */
+.adContainer img{
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    border: solid black 0.5px;
+    height: 10rem;
+    width: 40rem;
+
+}
+
+/* Styling for advert text on the front page */
+.adContainer span{
+    text-align: center;
+    display:block;
+    margin-bottom: 0.25vw;
+    color: #BDBDBD;
+}
+
+.imganText{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 1rem;
+    align-items: left;
+}
+
+/* 
+@media is a css at-rule (instructs CSS how to behave)
+'screen' is the media type - effects the screen
+'max-width' - when the max screen size is 800px
+this alters the RELATIVE size of the advert 
+*/
+@media screen and (max-width: 800px) {
+    .adContainer img{
+        margin-top: -1rem; 
+        height: 6rem;
+        width: 23rem;
+
+    }
+    .imganText{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 1rem;
+        align-items: left;
+    }
+
+    .adContainer span{
+        font-size: smaller;
+    }
+
+    #BaskButtonHideTrig{
+        display: none;
+    }
+}
+
+
+/* Outer container grid for displaying items
+repeat(1, 25rem) -> items are arranged 3 per row, each item is sized
+with 1fr width
+*/
+.containerGrid{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Outer container grid for displaying reviews
+repeat(1, 25rem) -> items are arranged 1 per row, each item is sized
+with 25rem width
+*/
+.revContainer{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, 25rem);
+}
+
+.revGridItm{
+    border: 1px solid #DFDFDF;
+    padding: 1rem;
+    text-align: left;
+}
+
+/* defines styles for each grid item */
+.gridItm{
+    border: 1px solid #DFDFDF;
+    padding: 1rem;
+    text-align: left;
+}
+
+/* defines styles for the img withing each grid item */
+.gridItm img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Used to size input fields
+* this is used when i would like a longer field e.g.
+* names/card numbers etc
+*/
+.longForm input{
+    width: 40rem !important;
+}
+
+/* Used to size input fields
+* this is used when i would like a shorter field e.g.
+* MM/YY dates/postcodes etc
+*/
+.shortForm input{
+    width: 7rem !important;
+}
+
+/* default form box sizing */
+.formBoxSizing input{
+    height: 2.5rem;
+    width: 20rem;
+}
+
+/* Button styling for buttons that perform distinct functions
+* i have used it for the 'add to basket' button
+*/
+.ButFormatBlue{
+    background-color: #0057a5;
+    border-radius: 64px;
+    font-weight:600;
+}
+
+/* Styling for GENERAL buttons
+* general buttons have grey backgrounds
+* with border radius
+*/
+.ButFormatGrey{
+    background-color: #BDBDBD;
+    border-radius: 64px; 
+    font-weight:600;
+}
+
+/* Hint fade in/out animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 
+* Hint animation properties
+* Hint colouring 
+*/
+.hintani{
+    animation-name: fadeIn; 
+    animation-duration: 2s;
+    color: #BB2626; 
+}
+
+/* colouring for astrix on labels */
+.astx{
+    color: #BB2626; 
+}
+

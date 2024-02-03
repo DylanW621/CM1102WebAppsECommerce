@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page header and subheader -->
+<div>
+    <h1 class="headers">{{ pageHeader }} Completed</h1>
+    <p class="subHeaders"> Thank you {{name}} for your order!</p>
+</div>
+
+<div class="pb-2">
+    <h2 class="headers" style="font-size:1.5rem !important;">Order summary:</h2>
+</div>
+
+<!-- table title -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Quantity</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price per item</th>
+        </tr>
+    </thead>
+
+    <!--tbody is a table-->
+    <!-- This piece of code iterates though the items in the order and displays them -->
+    <tbody>
+        {% for items in orderedItems%}
+        <tr>
+            <td>{{items.quantity}}</td>
+            <td>{{items.prodName}}</td>
+            <td>£{{items.totPrice}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

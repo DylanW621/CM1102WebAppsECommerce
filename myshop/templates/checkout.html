@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1 class="headers">{{ pageHeader }}</h1>
+</div>
+
+<div class="formBoxSizing" style="margin: 1rem 0 10rem 0;">
+    <h3 class="redtext" style="font-size: large;">Please fill in all fields!</h3>  
+    <form method="POST" enctype="multipart/form-data" id="checkform">
+    
+        <!--csrf token is NEEDED so that the form can be validated on submit press-->
+        <!-- DONT REMOVE AGAIN BY ACCIDENT!! -->
+
+        {{ form.csrf_token }}
+
+        <!-- First line of address -->
+        <div class="inputfieldspad formBoxSizing">
+            {{ form.addFirst.label }} <span class="astx">*</span>
+            <br>
+            {{ form.addFirst }}<br>
+            <span class="hintani" id="addFspan"></span>
+        </div>
+
+        <!-- Address town  -->
+        <div class="inputfieldspad formBoxSizing">
+            {{ form.addTown.label }} <span class="astx">*</span>
+            <br>
+            {{ form.addTown }}<br>
+            <span class="hintani" id="townspan"></span>
+        </div>
+
+        <!-- Address postcode -->
+        <div class="inputfieldspad formBoxSizing shortForm">
+            {{ form.addPost.label }} <span class="astx">*</span>
+            <br>
+            {{ form.addPost }}<br>
+            <span class="hintani" id="postspan"></span>
+        </div>
+
+        <!-- payment section title -->
+        <div class="pt-3">
+            <span class="pb-5" style="font-size: large; font-weight:600;">Payment information</span>
+        </div>
+
+
+        <!-- card number -->
+        <div class="inputfieldspad formBoxSizing">
+            {{ form.cardN.label }} <span class="astx">*</span>
+            <br>
+            {{ form.cardN }}<br>
+            <span class="hintani" id="cardNspan"></span>
+        </div>
+
+
+        <!-- card expiry date -->
+        <div class="inputfieldspad formBoxSizing shortForm">
+            {{ form.expDate.label }} <span class="astx">*</span>
+            <br>
+            {{ form.expDate }}<br>
+            <span class="hintani" id="expspan"></span>
+        </div>
+
+
+        <!-- card cvv code -->
+        <div class="inputfieldspad formBoxSizing shortForm">
+            {{ form.cvv.label }} <span class="astx">*</span>
+            <br>
+            {{ form.cvv }}<br>
+            <span class="hintani" id="cardCvvspan"></span>
+        </div>
+
+
+        <!-- card holder name  -->
+        <div class="inputfieldspad formBoxSizing">
+            {{ form.cardhName.label }} <span class="astx">*</span>
+            <br>
+            {{ form.cardhName }}<br>
+            <span class="hintani" id="cardHspan"></span>
+        </div>
+
+
+        <!-- span that shows total price from basket -->
+        <div class="py-2">
+            <span style="font-weight: 600;">Your total to pay is: £{{ checkoutPrice }}</span>
+        </div>
+        
+
+        <!-- submit button -->
+        <div id="butChanger">
+            <button class="ButFormatGrey" type="submit" style="margin-top: 0.5rem;">Order Now</button>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

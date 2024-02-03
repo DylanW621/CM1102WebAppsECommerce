@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% import "bootstrap/form.html" as wtf %}
+
+{% block content %}
+
+<!-- Page header and subheader -->
+<h1 class="headers text-center">{{pageHeader}}</h1>
+
+<div class="text-center formBoxSizing" style="margin: 1rem 0 10rem 0;">
+    <h3 class="redtext" style="font-size: large; padding-top: 0.25rem;">Please fill in all fields!</h3>  
+    <form method="POST" enctype="multipart/form-data">
+    
+        <!--csrf token is NEEDED so that the form can be validated on submit press-->
+        <!-- DONT REMOVE AGAIN BY ACCIDENT!! -->
+
+        {{ form.csrf_token }}
+
+        <!-- Name -->
+        <div class="inputfieldspad">
+            {{ form.name.label }}
+            <br>
+            {{ form.name }}
+        </div>
+
+        <!-- Email -->
+        <div class="inputfieldspad">
+            {{ form.email.label }}
+            <br>
+            {{ form.email }}
+        </div>
+
+        <!-- password -->
+        <div class="inputfieldspad">
+            {{ form.password.label }}
+            <br>
+            {{ form.password }}
+            <br>
+            <!-- confirm password -->
+            {{ form.conf.label }}
+            <br>
+            {{ form.conf }}
+        </div>
+
+        <!-- Displays error messages -->
+        <div class="inputfieldspad" style="color:red;">
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    {{ error }}
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <button class="ButFormatGrey" type="submit" style="margin-top: 0.5rem;">Submit</button>
+    </form>
+
+</div>   
+
+{% endblock %}

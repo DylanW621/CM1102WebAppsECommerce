@@ -1,0 +1,37 @@
+<form method="POST" style="margin-bottom: 0.5rem;">
+    <label for="sortCat">Sort by:</label>
+    <select name="sortCat" id="sortCat">
+        {% if cat == "asc" %}
+        <option value="">None</option>
+        <option value="asc" selected>Price (low to high)</option>
+        <option value="dsc">Price (high to low)</option>
+        <option value="env">Environmental impact (asc)</option>
+        <option value="name">Product name (asc)</option>
+        {% elif cat == "dsc" %}
+        <option value="">None</option>
+        <option value="asc">Price (low to high)</option>
+        <option value="dsc" selected>Price (high to low)</option>
+        <option value="env">Environmental impact (asc)</option>
+        <option value="name">Product name (asc)</option>
+        {% elif cat == "env" %}
+        <option value="">None</option>
+        <option value="asc">Price (low to high)</option>
+        <option value="dsc">Price (high to low)</option>
+        <option value="env" selected>Environmental impact (asc)</option>
+        <option value="name">Product name (asc)</option>
+        {% elif cat == "name" %}
+        <option value="">None</option>
+        <option value="asc">Price (low to high)</option>
+        <option value="dsc">Price (high to low)</option>
+        <option value="env">Environmental impact (asc)</option>
+        <option value="name" selected>Product name (asc)</option>
+        {% else %}
+        <option value="" selected>None</option>
+        <option value="asc">Price (low to high)</option>
+        <option value="dsc">Price (high to low)</option>
+        <option value="env">Environmental impact (asc)</option>
+        <option value="name">Product name (asc)</option>
+        {% endif %}
+    </select>
+    <button type="submit" style="border-radius: 64px;">Update</button>
+</form>

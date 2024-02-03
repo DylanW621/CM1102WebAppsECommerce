@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pb-2 row">
+    <!-- page header -->
+    <div class="col-sm-6">
+        <h1 class="headers">{{ pageHeader }}</h1>
+    </div>
+
+    <!-- go back button. It uses js history.back() to go back to the previous page -->
+    <div class="col-sm-6 float-right d-flex justify-content-end">
+        <button  class="ButFormatGrey float-end" type="button"  onclick="history.back()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.75rem" height="1.75rem" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            <span>Go back</span>
+        </button>
+    </div>
+</div>
+
+<!-- Basket heading for columns -->
+<div class="container border-bottom" style="width:70%;">
+    <div class="row">
+        <span class="col-sm">
+            Product
+        </span>
+        <span class="col-sm">
+            Quantity
+        </span>
+        <span class="col-sm">
+            Price
+        </span>
+    </div>
+</div>
+
+<!-- This iterates through the products of a specific category passed into the page-->
+<!-- The items are arranged into a grid pattern using the css class containerGrid -->
+<!-- Th item is passed into the webpage using the variable 'itemsinBask' -->
+
+{% for products in itemsinBask %}
+<div class="container my-1" style="background-color: #DFDFDF; width:70%;">
+    <div class="row">
+
+        <div class="col-sm">
+            <div class="py-3">
+                <!-- Product names -->
+                <span style="font-weight: 600;">{{products.prodName}}</span><br>
+                <img src="{{products.prodImg}}" style="height: 10rem; width: 10rem;">
+            </div>
+        </div>
+    
+        <div class="col-sm d-flex align-items-center">
+            <div class="allign-center d-flex align-items-center"> 
+
+                <!-- remove from basket button -->
+                <a href="{{ url_for('addRemInBask', prodID=products.prodID, choice='rem') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                    </svg>
+                </a>
+                
+                <!-- Displays the quanity of an item in the basket -->
+                <span class="px-2" style="font-weight: 600;">
+                    {{products.quantity}}
+                </span>
+                
+                <!-- add to basket button -->
+                <a href="{{ url_for('addRemInBask', prodID=products.prodID, choice='add') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Total price of all items in the basket-->
+        <div class="col-sm d-flex align-items-center" style="font-weight: 600;">
+            <span>£{{ products.totPrice }}</span>
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+
+<div class="container" style="width:70%; padding:1rem 0 0 0;">
+    <div class="row">
+        <div class="col-sm d-flex justify-content-end">
+            <div>
+                <!-- Total of all items in the basket -->
+                <span style="font-weight: 600;">TOTAL</span>
+                <span>£ {{ basketTotal }}</span><br>
+
+                <!-- Checkout button -->
+                <a href="{{ url_for('checkout') }}" class="btn me-2 mt-2" style="background-color: #0057a5;border-radius: 64px; font-weight:600;">
+                    <span style="color: white;">Checkout</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
